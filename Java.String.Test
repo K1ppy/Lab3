@@ -1,0 +1,27 @@
+package Test;
+ 
+import com.company.Main;
+import org.junit.jupiter.api.Test;
+ 
+import java.util.ArrayList;
+import java.util.*;
+ 
+import static org.junit.jupiter.api.Assertions.*;
+ 
+class MainTest {
+    @Test
+    void testCalcValue() {
+        //Simple test
+        List<String> actual = new ArrayList<>();
+        actual.add("123 aa bb");
+        List<String> expected = new ArrayList<>();
+        expected.add("bb aa 123 ");
+        assertEquals(Main.getResult(actual), expected);
+        //Test2
+        actual.clear();
+        actual.add("713shfgsjgfhfghegh2v32n2 252 42 43 d g h1");
+        List<String> expected2 = new ArrayList<>();
+        expected2.add("h1 g d 43 42 252 713shfgsjgfhfghegh2v32n2 ");
+        assertEquals(Main.getResult(actual), expected2);
+    }
+}
