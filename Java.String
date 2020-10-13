@@ -1,22 +1,25 @@
-package com.company;
- 
+package com.bsu;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
- 
+
 public class Main {
- 
+
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             List<String> text = readText(in);
-            getResult(text);
+            List<String> newText = new ArrayList<>();
+            newText = getResult(text);
+            for (String s : newText) {
+                System.out.println(s);
+            }
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
- 
     }
- 
-        public static List<String> readText(Scanner scanner) throws IllegalArgumentException {
+
+    public static List<String> readText(Scanner scanner) throws IllegalArgumentException {
         String nextLine = scanner.nextLine();
         List<String> txt = new ArrayList<>();
         while (!nextLine.isEmpty()) {
@@ -25,25 +28,17 @@ public class Main {
         }
         return txt;
     }
- 
+
     public static List<String> getResult(List<String> text) {
-        try {
-            List<String> newText = new ArrayList<>();
-            for (String s : text) {
-                String[] eachWord = s.split("\\s");
-                String newLine = "";
-                for (int j = eachWord.length - 1; j >= 0; --j) {
-                    System.out.print(eachWord[j] + " ");
-                    newLine = newLine.concat(eachWord[j] + " ");
-                }
-                newText.add(newLine);
-                System.out.println();
+        List<String> newText = new ArrayList<>();
+        for (String s : text) {
+            String[] eachWord = s.split("\\s");
+            String newLine = "";
+            for (int j = eachWord.length - 1; j >= 0; --j) {
+                newLine = newLine.concat(eachWord[j].concat(" "));
             }
-            return newText;
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
+            newText.add(newLine);
         }
-        return null;
+        return newText;
     }
- 
 }
