@@ -1,0 +1,27 @@
+package com.bsu;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MainTest {
+    @Test
+    void testSimpleLogic() {
+        List<String> actual = new ArrayList<>();
+        actual.add("123 aa bb");
+        List<String> expected = new ArrayList<>();
+        expected.add("bb aa 123 ");
+        assertEquals(Main.getResult(actual), expected);
+    }
+    @Test
+    void testOneWord(){
+        List<String> actual = new ArrayList<>();
+        actual.add("12345");
+        List<String> expected = new ArrayList<>();
+        expected.add("12345 ");
+        assertEquals(Main.getResult(actual), expected);
+    }
+}
