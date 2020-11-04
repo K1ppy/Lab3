@@ -9,8 +9,7 @@ public class Main {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             List<String> text = readText(in);
-            List<String> newText = new ArrayList<>();
-            newText = getResult(text);
+            List<String> newText = getResult(text);
             for (String s : newText) {
                 System.out.println(s);
             }
