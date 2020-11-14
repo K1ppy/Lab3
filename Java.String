@@ -1,0 +1,43 @@
+package com.bsu;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        try (Scanner in = new Scanner(System.in)) {
+            List<String> text = readText(in);
+            List<String> newText = getResult(text);
+            for (String s : newText) {
+                System.out.println(s);
+            }
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    public static List<String> readText(Scanner scanner) throws IllegalArgumentException {
+        String nextLine = scanner.nextLine();
+        List<String> txt = new ArrayList<>();
+        while (!nextLine.isEmpty()) {
+            txt.add(nextLine);
+            nextLine = scanner.nextLine();
+        }
+        return txt;
+    }
+
+    public static List<String> getResult(List<String> text) {
+        List<String> newText = new ArrayList<>();
+        for (String s : text) {
+            String[] eachWord = s.split("\\s");
+            String newLine = "";
+            for (int j = eachWord.length - 1; j >= 0; --j) {
+                newLine = newLine.concat(eachWord[j].concat(" "));
+            }
+            newText.add(newLine);
+        }
+        return newText;
+    }
+}
